@@ -9,15 +9,15 @@
 
 ## Methods
 
-### 📊 Data Collection and Manipulation
+### Data Collection and Manipulation
 - Recipes and reviews were collected from a popular online recipe sharing platform.  
 - Data preprocessing included cleaning ingredient lists, standardizing nutritional content, and extracting sentiment scores from user reviews.
 
-### 📈 Regression Analysis
+### Regression Analysis
 - **Individual Ingredients:** Linear regression models were used to evaluate the association between the presence of specific ingredients and user sentiment.  
 - **Ingredient Pairs:** Pairwise regression analyses were performed to examine interactions between commonly co-occurring ingredients on sentiment.
 
-### 🧮 GAM Regression Model
+### GAM Regression Model
 - A Generalized Additive Model (GAM) was applied to examine the relationships between nutritional content (carbohydrates, fats, protein, calories) and both sentiment and popularity metrics.  
 - This approach allowed non-linear effects of nutritional components on user sentiment and recipe popularity to be captured.
   
