@@ -1,9 +1,11 @@
 # Can Ingredients Predict Sentiment in Food Recipes?
----
+
+--
 
 ## Motivation / Purpose
-Digital media exposure, including social networking and online recipe platforms, can influence dietary choices by highlighting trends, popular ingredients, and user-generated recommendations (Reau, 2013). These exposures impact what individuals perceive as desirable or normative foods. This project aims to investigate how ingredients, nutritional content, and sentiment in online recipes relate to recipe popularity, providing insights into potential digital media influences on taste preferences.
----
+- Digital media exposure, including social networking and online recipe platforms, can influence dietary choices by highlighting trends, popular ingredients, and user-generated recommendations (Reau, 2013). These exposures impact what individuals perceive as desirable or normative foods. This project aims to investigate how ingredients, nutritional content, and sentiment in online recipes relate to recipe popularity, providing insights into potential digital media influences on taste preferences.
+
+--
 
 ## Methods
 
@@ -19,7 +21,7 @@ Digital media exposure, including social networking and online recipe platforms,
 - A Generalized Additive Model (GAM) was applied to examine the relationships between nutritional content (carbohydrates, fats, protein, calories) and both sentiment and popularity metrics.  
 - This approach allowed non-linear effects of nutritional components on user sentiment and recipe popularity to be captured.
   
----
+--
 
 ## Conclusion / Results
 - Positive sentiment was observed for commonly used baking ingredients, while spicy ingredients were associated with negative sentiment.  
