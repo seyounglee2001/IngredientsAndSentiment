@@ -1,4 +1,4 @@
-# 🥑 Can Ingredients Predict Sentiment in Food Recipes? 🥑
+# 🥑 Can Ingredients Predict Sentiment in Food Recipes?
 
 ---
 
