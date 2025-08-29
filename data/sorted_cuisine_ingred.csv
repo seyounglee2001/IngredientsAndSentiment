@@ -1,0 +1,501 @@
+Cuisine,Ingredient,Count
+Southern,salt,30
+Southern,all-purpose flour,24
+Southern,butter,19
+Southern,water,13
+Southern,milk,11
+Southern,garlic,11
+Southern,onion,10
+Southern,eggs,9
+Southern,cayenne pepper,8
+Southern,buttermilk,7
+Puerto,salt,25
+Puerto,garlic,19
+Puerto,olive oil,18
+Puerto,water,17
+Puerto,onion,8
+Puerto,coconut milk,7
+Puerto,evaporated milk,7
+Puerto,vegetable oil,7
+Puerto,green bell pepper,7
+Puerto,butter,6
+Colombian,salt,5
+Colombian,onion,2
+Colombian,garlic,2
+Colombian,eggs,2
+Colombian,plum tomato,1
+Colombian,lime,1
+Colombian,olive oil,1
+Colombian,apple cider vinegar,1
+Colombian,jalapeno pepper,1
+Colombian,water,1
+Dutch,all-purpose flour,15
+Dutch,butter,13
+Dutch,salt,8
+Dutch,egg,7
+Dutch,baking powder,6
+Dutch,water,6
+Dutch,eggs,6
+Dutch,milk,4
+Dutch,shortening,2
+Dutch,paprika,2
+Tex-Mex,salt,11
+Tex-Mex,sour cream,11
+Tex-Mex,olive oil,11
+Tex-Mex,garlic,11
+Tex-Mex,water,10
+Tex-Mex,onion,10
+Tex-Mex,salsa,9
+Tex-Mex,cooking spray,7
+Tex-Mex,red bell pepper,7
+Tex-Mex,jalapeno pepper,7
+Vietnamese,garlic,29
+Vietnamese,water,21
+Vietnamese,salt,13
+Vietnamese,vegetable oil,13
+Vietnamese,lime,9
+Vietnamese,soy sauce,9
+Vietnamese,onion,9
+Vietnamese,carrot,7
+Vietnamese,olive oil,6
+Vietnamese,sesame oil,5
+Thai,garlic,24
+Thai,coconut milk,22
+Thai,water,18
+Thai,vegetable oil,17
+Thai,soy sauce,16
+Thai,red bell pepper,13
+Thai,onion,12
+Thai,salt,11
+Thai,brown sugar,11
+Thai,curry powder,7
+Canadian,salt,25
+Canadian,butter,20
+Canadian,all-purpose flour,20
+Canadian,water,15
+Canadian,milk,10
+Canadian,egg,9
+Canadian,eggs,9
+Canadian,onion,8
+Canadian,brown sugar,8
+Canadian,garlic,7
+Israeli,salt,9
+Israeli,olive oil,8
+Israeli,water,8
+Israeli,garlic,6
+Israeli,eggs,6
+Israeli,onion,5
+Israeli,red bell pepper,4
+Israeli,all-purpose flour,4
+Israeli,baking powder,3
+Israeli,vegetable oil,3
+Cuban,garlic,29
+Cuban,olive oil,24
+Cuban,salt,21
+Cuban,onion,20
+Cuban,water,14
+Cuban,green bell pepper,13
+Cuban,bay leaves,11
+Cuban,vegetable oil,8
+Cuban,lime,8
+Cuban,tomato paste,6
+Filipino,garlic,26
+Filipino,onion,25
+Filipino,water,25
+Filipino,vegetable oil,20
+Filipino,soy sauce,16
+Filipino,salt,15
+Filipino,olive oil,10
+Filipino,coconut milk,6
+Filipino,bay leaves,6
+Filipino,brown sugar,6
+Swedish,all-purpose flour,27
+Swedish,salt,26
+Swedish,butter,25
+Swedish,milk,18
+Swedish,eggs,14
+Swedish,water,12
+Swedish,egg,9
+Swedish,worcestershire sauce,5
+Swedish,sugar,5
+Swedish,sour cream,4
+Greek,olive oil,32
+Greek,garlic,21
+Greek,salt,16
+Greek,water,13
+Greek,lemon juice,11
+Greek,lemon,11
+Greek,butter,10
+Greek,all-purpose flour,10
+Greek,onion,10
+Greek,eggs,8
+Mexican,salt,20
+Mexican,onion,19
+Mexican,garlic,18
+Mexican,olive oil,14
+Mexican,vegetable oil,12
+Mexican,sour cream,11
+Mexican,water,9
+Mexican,lime,8
+Mexican,avocado,6
+Mexican,red bell pepper,6
+Persian,salt,19
+Persian,water,13
+Persian,garlic,12
+Persian,vegetable oil,11
+Persian,olive oil,11
+Persian,onion,10
+Persian,butter,6
+Persian,basmati rice,5
+Persian,saffron,5
+Persian,all-purpose flour,5
+Chinese,soy sauce,43
+Chinese,vegetable oil,27
+Chinese,water,23
+Chinese,garlic,22
+Chinese,sesame oil,20
+Chinese,salt,16
+Chinese,egg,11
+Chinese,eggs,10
+Chinese,all-purpose flour,8
+Chinese,brown sugar,8
+Russian,salt,33
+Russian,all-purpose flour,27
+Russian,sour cream,21
+Russian,butter,20
+Russian,onion,17
+Russian,water,15
+Russian,vegetable oil,13
+Russian,potatoes,12
+Russian,eggs,12
+Russian,egg,11
+French,butter,27
+French,salt,22
+French,all-purpose flour,17
+French,olive oil,14
+French,garlic,11
+French,eggs,11
+French,water,9
+French,milk,7
+French,lemon juice,5
+French,dijon mustard,5
+Korean,soy sauce,30
+Korean,sesame oil,28
+Korean,garlic,25
+Korean,vegetable oil,13
+Korean,water,13
+Korean,brown sugar,10
+Korean,onion,9
+Korean,salt,9
+Korean,green onion,7
+Korean,black pepper,5
+Australian,salt,24
+Australian,all-purpose flour,24
+Australian,butter,18
+Australian,eggs,18
+Australian,baking powder,12
+Australian,milk,9
+Australian,egg,8
+Australian,water,7
+Australian,golden syrup,6
+Australian,coconut milk,6
+Brazilian,eggs,17
+Brazilian,water,17
+Brazilian,garlic,15
+Brazilian,olive oil,15
+Brazilian,salt,15
+Brazilian,milk,14
+Brazilian,onion,13
+Brazilian,all-purpose flour,12
+Brazilian,baking powder,10
+Brazilian,butter,9
+Scandinavian,all-purpose flour,35
+Scandinavian,salt,35
+Scandinavian,butter,26
+Scandinavian,milk,21
+Scandinavian,egg,15
+Scandinavian,eggs,14
+Scandinavian,water,12
+Scandinavian,baking powder,8
+Scandinavian,potatoes,4
+Scandinavian,worcestershire sauce,4
+Lebanese,salt,22
+Lebanese,olive oil,21
+Lebanese,garlic,17
+Lebanese,water,14
+Lebanese,lemon juice,12
+Lebanese,onion,11
+Lebanese,all-purpose flour,8
+Lebanese,vegetable oil,6
+Lebanese,lemon,5
+Lebanese,baking powder,5
+Spanish,garlic,27
+Spanish,olive oil,21
+Spanish,onion,18
+Spanish,salt,11
+Spanish,green bell pepper,9
+Spanish,water,8
+Spanish,red bell pepper,8
+Spanish,lemon,7
+Spanish,paprika,7
+Spanish,eggs,6
+Finnish,salt,13
+Finnish,all-purpose flour,13
+Finnish,butter,10
+Finnish,milk,10
+Finnish,eggs,8
+Finnish,baking powder,4
+Finnish,water,3
+Finnish,margarine,2
+Finnish,potatoes,2
+Finnish,egg,2
+Pakistani,salt,14
+Pakistani,water,14
+Pakistani,vegetable oil,11
+Pakistani,onion,8
+Pakistani,garlic,6
+Pakistani,garam masala,6
+Pakistani,tomatoes,5
+Pakistani,cayenne pepper,5
+Pakistani,potatoes,4
+Pakistani,olive oil,3
+Soul,salt,29
+Soul,water,23
+Soul,all-purpose flour,16
+Soul,onion,14
+Soul,garlic,13
+Soul,cayenne pepper,11
+Soul,butter,7
+Soul,milk,7
+Soul,olive oil,6
+Soul,buttermilk,6
+Amish,salt,38
+Amish,all-purpose flour,30
+Amish,eggs,25
+Amish,milk,22
+Amish,baking powder,17
+Amish,vegetable oil,14
+Amish,butter,11
+Amish,onion,10
+Amish,brown sugar,9
+Amish,water,7
+Austrian,all-purpose flour,17
+Austrian,eggs,11
+Austrian,salt,10
+Austrian,butter,8
+Austrian,baking powder,6
+Austrian,egg,4
+Austrian,milk,3
+Austrian,water,3
+Austrian,rum,2
+Austrian,vegetable oil,2
+German,all-purpose flour,21
+German,butter,16
+German,salt,15
+German,eggs,15
+German,onion,11
+German,water,10
+German,baking powder,9
+German,milk,8
+German,egg,7
+German,bacon,6
+Malaysian,garlic,16
+Malaysian,vegetable oil,10
+Malaysian,water,9
+Malaysian,curry powder,9
+Malaysian,coconut milk,8
+Malaysian,salt,5
+Malaysian,onion,4
+Malaysian,brown sugar,4
+Malaysian,olive oil,4
+Malaysian,shallots,3
+Norwegian,all-purpose flour,16
+Norwegian,salt,14
+Norwegian,butter,7
+Norwegian,baking powder,7
+Norwegian,eggs,6
+Norwegian,bacon,3
+Norwegian,egg,3
+Norwegian,water,3
+Norwegian,cabbage,3
+Norwegian,sour cream,3
+Portuguese,garlic,21
+Portuguese,onion,18
+Portuguese,olive oil,18
+Portuguese,water,15
+Portuguese,salt,15
+Portuguese,potatoes,13
+Portuguese,butter,10
+Portuguese,all-purpose flour,10
+Portuguese,eggs,10
+Portuguese,milk,9
+Bangladeshi,water,8
+Bangladeshi,cayenne pepper,5
+Bangladeshi,vegetable oil,5
+Bangladeshi,onion,4
+Bangladeshi,salt,4
+Bangladeshi,tomatoes,3
+Bangladeshi,garlic,2
+Bangladeshi,garam masala,2
+Bangladeshi,mustard oil,2
+Bangladeshi,olive oil,1
+Jamaican,salt,17
+Jamaican,garlic,14
+Jamaican,brown sugar,13
+Jamaican,vegetable oil,12
+Jamaican,water,11
+Jamaican,soy sauce,10
+Jamaican,olive oil,10
+Jamaican,all-purpose flour,8
+Jamaican,onion,8
+Jamaican,baking powder,5
+Polish,butter,21
+Polish,salt,20
+Polish,all-purpose flour,20
+Polish,onion,16
+Polish,water,15
+Polish,sour cream,13
+Polish,eggs,11
+Polish,egg,9
+Polish,cabbage,9
+Polish,sauerkraut,7
+Indian,salt,33
+Indian,garlic,32
+Indian,garam masala,22
+Indian,vegetable oil,20
+Indian,cayenne pepper,20
+Indian,onion,19
+Indian,water,15
+Indian,curry powder,14
+Indian,butter,11
+Indian,tomato paste,8
+Jewish,eggs,37
+Jewish,salt,32
+Jewish,vegetable oil,23
+Jewish,all-purpose flour,20
+Jewish,water,11
+Jewish,butter,11
+Jewish,egg,8
+Jewish,honey,8
+Jewish,olive oil,8
+Jewish,garlic,8
+Chilean,salt,6
+Chilean,butter,5
+Chilean,all-purpose flour,5
+Chilean,water,5
+Chilean,onion,5
+Chilean,eggs,4
+Chilean,garlic,4
+Chilean,baking powder,2
+Chilean,milk,2
+Chilean,vegetable oil,2
+Belgian,salt,3
+Belgian,vegetable oil,3
+Belgian,all-purpose flour,2
+Belgian,water,2
+Belgian,celery,2
+Belgian,baking powder,1
+Belgian,egg,1
+Belgian,milk,1
+Belgian,nutmeg,1
+Belgian,leeks,1
+Turkish,water,16
+Turkish,salt,15
+Turkish,olive oil,14
+Turkish,garlic,12
+Turkish,all-purpose flour,9
+Turkish,onion,9
+Turkish,butter,8
+Turkish,paprika,7
+Turkish,tomato paste,6
+Turkish,vegetable oil,5
+Japanese,soy sauce,24
+Japanese,water,23
+Japanese,salt,17
+Japanese,eggs,9
+Japanese,garlic,7
+Japanese,all-purpose flour,7
+Japanese,sesame oil,7
+Japanese,vegetable oil,6
+Japanese,worcestershire sauce,5
+Japanese,olive oil,5
+Argentinian,red wine vinegar,9
+Argentinian,salt,9
+Argentinian,garlic,8
+Argentinian,olive oil,7
+Argentinian,egg,6
+Argentinian,water,6
+Argentinian,onion,5
+Argentinian,butter,5
+Argentinian,all-purpose flour,4
+Argentinian,paprika,4
+Italian,garlic,29
+Italian,olive oil,27
+Italian,salt,20
+Italian,eggs,14
+Italian,water,12
+Italian,butter,10
+Italian,tomato paste,8
+Italian,ricotta cheese,6
+Italian,egg,5
+Italian,mozzarella cheese,5
+Peruvian,garlic,16
+Peruvian,vegetable oil,14
+Peruvian,water,10
+Peruvian,olive oil,8
+Peruvian,soy sauce,8
+Peruvian,onion,8
+Peruvian,salt,5
+Peruvian,mayonnaise,5
+Peruvian,paprika,5
+Peruvian,evaporated milk,4
+Swiss,salt,5
+Swiss,all-purpose flour,4
+Swiss,eggs,4
+Swiss,butter,3
+Swiss,baking powder,2
+Swiss,swiss cheese,1
+Swiss,potatoes,1
+Swiss,vegetable oil,1
+Swiss,garlic,1
+Swiss,lemon,1
+South,water,7
+South,onion,6
+South,milk,6
+South,salt,5
+South,butter,5
+South,curry powder,4
+South,eggs,4
+South,bay leaves,3
+South,vegetable oil,3
+South,garlic,2
+Danish,salt,22
+Danish,all-purpose flour,18
+Danish,butter,14
+Danish,eggs,12
+Danish,milk,8
+Danish,water,7
+Danish,shortening,4
+Danish,baking powder,4
+Danish,egg,4
+Danish,sugar,3
+Indonesian,garlic,17
+Indonesian,vegetable oil,10
+Indonesian,water,9
+Indonesian,shallots,5
+Indonesian,lemon juice,4
+Indonesian,onion,4
+Indonesian,salt,4
+Indonesian,soy sauce,3
+Indonesian,brown sugar,3
+Indonesian,peanut oil,2
+Cajun,salt,27
+Cajun,green bell pepper,22
+Cajun,garlic,21
+Cajun,cayenne pepper,19
+Cajun,butter,19
+Cajun,onion,18
+Cajun,water,11
+Cajun,all-purpose flour,11
+Cajun,paprika,10
+Cajun,worcestershire sauce,9

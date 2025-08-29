@@ -1,0 +1,214 @@
+---
+title: "Predicting Sentiment of Ingredients from Online Food Recipes"
+author: "Seyoung Lee"
+bibliography: references.bib
+format:
+  html: 
+    number-sections: true
+---
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+library(tidyverse)
+library(gt)
+library(gridExtra)
+library(ggplot2)
+library(readr)
+library(MASS)
+load(file = "ingredient_prediction.rda")
+knitr::opts_chunk$set(echo=FALSE, fig.width=5.5, fig.height=4, fig.align='center')
+```
+
+# Introduction
+
+As the reliance on social networking platforms for food education grows, the use of online resources is likely shaping both taste preferences and perceptions of food [@reau2013socialmedia]. Reau’s research emphasizes that exposure to food-related content on social media can influence dietary choices by highlighting trends, popular ingredients, and user-generated recommendations, which impact what individuals perceive as desirable or normative eating behaviors.  In addition to this reliance, an increasing number of researchers have found that extended use of screen-media devices such as television has previously been linked to unhealthy dietary behaviors among children and adolescents. This includes an increased tendency to consume sugary and fatty foods, as well as a decreased intake of fruits and vegetables, which are determining factors in the onset of overweight and obesity [@sina2021digital].
+
+The study examining the effect of digital media use on taste preferences revealed that the dietary behaviors and taste preferences of children and adolescents were influenced by increased exposure to digital media. Specifically, prolonged television viewing was linked to heightened sweet preferences across all groups. Moreover, a positive trend was observed between increased smartphone use and high sweet taste preferences in all participants, particularly in young children [@sina2021digital]. Hence, this paper explores the sentiment expressed in comments on the popular recipe-sharing platform, Allrecipes.com, and correlates it with the ingredients of different recipes. This correlation aims to offer insights into taste preferences and potentially identify popular flavor profiles [@allrecipes].
+
+Simultaneously, our aim is to investigate the trends reflected in these ingredients and explore how perceptions evolve based on the nutritional information provided in these recipes. By delving into the nutritional aspects, we seek to gain insight into the public’s interests and preferences regarding health-conscious eating habits, ingredient awareness, and dietary choices. This comprehensive analysis allows us to uncover nuanced patterns in culinary preferences and potentially identify emerging trends in nutritional awareness among consumers. 
+
+By analyzing shifts in sentiment by ingredients, researchers can identify food categories that are gaining popularity due to perceived tastiness, health benefits, or other factors. Hence, this paper aims to explore the variations in sentiment by ingredients by exploring the following research questions: 
+
+-   Q1: Is there a significant association between individual ingredients and sentiment in recipe comments?
+-   Q2: Is there a significant association between ingredient pairs and sentiment in recipe comments?
+-   Q3: Can we predict popularity and sentiment of recipes based on their nutritional content?
+
+
+## Exploratory Data Analysis
+
+For each recipe, details encompassing the number of reviews, comments, average sentiment scores, and nutritional information, including metrics like calories, fat, carbohydrates, and protein content measured in grams, were compiled.
+
+We analyzed a total of 940 recipes sourced from allrecipes.com, a prominent food blog comprised of a vast collection of user-submitted recipes across various cuisines and dietary preferences. Allrecipes.com is a leading platform in Cooking & Recipes reaching over 100 million total visits [@similarweb]. Our dataset of recipes contains a total of 9,437,608 tokens from 101,181 individual comments. Each comment's sentiment was analyzed using the Textblob library, which assigns a sentiment score on a scale from -1 to 1. A score of -1 indicates the most negative sentiment, 0 indicates neutrality, and +1 represents the most positive sentiment [@textblob]. The following figure illustrates the distribution of sentiment scores across the comments.
+
+```{r, message=FALSE}
+df_sent <- read_tsv("data/sentiment_scores.tsv")
+sent_hist <- ggplot(df_sent, aes(x = sent_score)) +
+  geom_histogram(bins = 30, fill = "cornflowerblue", color = "lightsalmon", linewidth = 0.5) +
+  labs(title = "Sentiment Scores Distribution",
+       x = "Sentiment Score",
+       y = "Frequency",
+       caption = "Figure 1: Distribution of Average Sentiment Scores") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold", family = "Times New Roman"),
+        axis.text = element_text(family = "Times New Roman"),
+        axis.title = element_text(family = "Times New Roman"),
+        plot.caption = element_text(family = "Times New Roman", size = 12, hjust=0.5))
+sent_hist
+```
+
+The sentiment scores display a clear left skew. Even after normalizing the histogram (Figure 1), the distribution remains left-skewed, indicating an inherent positivity bias in the sentiment data, and suggesting a general tendency toward positive sentiment in food recipe reviews.
+
+
+```{r, warning=FALSE, message=FALSE}
+df_updated <- read_tsv("data/output_sent_updated.tsv", show_col_types = FALSE)
+```
+
+```{r, warning=FALSE, message=FALSE, fig.cap = "Figure 2: Nutrition Summaries Distribution"}
+theme_times <- theme(plot.title = element_text(hjust = 0.5, face = "bold", family = "Times New Roman"),
+        axis.text = element_text(family = "Times New Roman"),
+        axis.title = element_text(family = "Times New Roman"),
+        plot.caption = element_text(family = "Times New Roman", hjust = 0) )
+# Calories
+calories_df <- ggplot(df_updated, aes(x = Calories)) +
+  geom_histogram(bins = 40, fill = "lavender", color = "dodgerblue", linewidth = 0.5) +
+  xlim(0, 1800) +
+  labs(title = "Calories Distribution",
+       x = "Calories in grams",
+       y = "Frequency") +
+  theme_minimal() +
+  theme_times
+# Fat
+fat_df <- ggplot(df_updated, aes(x = Fat)) +
+  geom_histogram(bins = 40, fill = "lightpink", color = "dodgerblue", linewidth = 0.5) +
+  xlim(0, 150) +
+  labs(title = "Fat Distribution",
+       x = "Fat in grams",
+       y = "Frequency") +
+  theme_minimal() +
+  theme_times
+# Carbs
+carbs_df <- ggplot(df_updated, aes(x = Carbs )) +
+  geom_histogram(bins = 40, fill = "palegreen1", color = "dodgerblue", linewidth = 0.5) +
+  xlim(0, 200) +
+  labs(title = "Carbs Distribution",
+       x = "Carbs in grams",
+       y = "Frequency") +
+  theme_minimal() +
+  theme_times
+# Protein
+protein_df <- ggplot(df_updated, aes(x = Protein)) +
+  geom_histogram(bins = 40, fill = "lightcyan", color = "dodgerblue", linewidth = 0.5) +
+  xlim(0, 100) +
+  labs(title = "Protein Distribution",
+       x = "Protein in grams",
+       y = "Frequency") +
+  theme_minimal() +
+  theme_times
+grid.arrange(calories_df, fat_df, carbs_df, protein_df, ncol = 2)
+```
+
+In Figure 2, we observe the distribution of nutritional attributes across all dishes. The distinct right skew in all distributions indicates a trend towards higher values and can also suggest the presence of numerous outliers within the higher range of the distribution. This suggests that certain recipes tend to exhibit elevated nutritional content in terms of calories, fat, carbohydrates, and proteins, while the majority fall within typical ranges. 
+
+# Methods
+
+### Phase 1: Individual Ingredient Sentiment
+
+We opted to employ a simple linear regression model with individual ingredients as the predictor variable and the average sentiment as the outcome variable. This choice of method aligns with the research objective of examining the relationship between specific ingredients and the sentiment expressed in recipe comments.
+
+In this context, each ingredient serves as an independent variable, which allows us to assess the impact of individual ingredients on the overall sentiment of recipe comments. We can identify which ingredients tend to have more of a positive or negative sentiment from reviewers by analyzing the regression coefficients and statistical significance associated with each ingredient.
+
+```{r}
+# one_ingred_df
+one_ingred_gt <- gt(one_ingred_df) %>%
+  tab_header(
+    title = "Most Statistically Significant Ingredients on Sentiment",
+    subtitle = "The six most significant p-values are presented."
+  ) %>%
+  tab_caption("Table 1: Ingredient sentiment estimates")
+
+one_ingred_gt
+```
+
+When examining the sentiment estimates of individual ingredients, we find a total of four ingredients that yield statistically significant p-values: white sugar, chili powder, lemon juice, and ground beef. Interestingly, white sugar and lemon juice, typically associated with sweeter recipes and particularly in baking, exhibit statistically positive sentiment (white sugar: 95% CI\[0.03, 0.25\], p=0.012; lemon juice: 95% CI\[0.03, 0.69\], p=0.031). Conversely, ingredients associated with different taste preferences such as umami or spiciness demonstrate statistically significant negative sentiment (chili powder: 95% CI\[-0.96, -0.10\], p=0.015; ground beef: 95% CI\[-0.67, -0.02\], p=0.040).
+
+### Phase 2: Ingredient Pair Sentiment
+
+As only a small fraction of individual ingredients demonstrate significance, exploring groups, or in this case, ingredient pairs, may offer more significant sentiment outcomes. When analyzing individual ingredients, it may be difficult to isolate a single ingredient that yields statistically significant sentiment results. Hence, investigating the sentiment expressed by ingredient pairs can be more relevant to the goal of predicting sentiment by ingredients.
+
+```{r}
+# pairs_ingred_gt
+pairs_ingred_gt <- gt(pairs_ingred_df) %>%
+  tab_header(
+    title = "Statistically Significant Ingredient Pairs on Sentiment",
+    subtitle = "The 10 most significant p-values are presented."
+  ) %>%
+  tab_caption("Table 2: Ingredient pair sentiment estimates")
+
+pairs_ingred_gt
+```
+
+Table 2 reveals that the first nine ingredient pairs exhibit significance, while only four of the individual ingredients exhibited significance This suggests that combinations of ingredients provide a more nuanced perspective on the popularity or public sentiment towards a recipe. Consistent with earlier findings, ingredient pairs commonly linked with baking (e.g., lemon juice-white sugar, butter-cornstarch, vegetable oil-white sugar) tend to evoke positive sentiment. Conversely, pairs associated with savory or spicier dishes (e.g., chili powder-salt, ground black pepper-ground cumin, ground black pepper-sour cream, chili powder-ground cumin, cayenne pepper-olive oil) yield more negative sentiment.
+
+### Phase 3: Popularity and Sentiment by Nutritional Content
+
+Having potentially identified a pattern regarding the sentiment associated with specific taste preferences in recipes, we extend our analysis to explore the individual nutritional profiles of these recipes. By examining the recipes' nutritional content, we aim to uncover patterns in the recipes that garner the most popularity. In this context, we utilize the number of reviews as a metric for popularity and consider the sentiment of each dish, utilizing the average sentiment scores, to find potential correlations.
+
+Because there is potential collinearity between the different the nutritional attributes in the recipes, we opted to use a generalized additive model (GAM) to explore the relationship between nutritional content and sentiment/popularity. GAMs can accomodate for more complex and non-linear patterns without explicit transformations or model assumptions. More specifically, it can handle interactions between the predictors, while multivariate linear models do not account for collinearity.
+
+```{r}
+nutrition_gt <- gam_table %>%
+  gt() %>%
+  tab_header(
+    title = "GAM Regressing # of Reviews and Sentiment on Nutrition"
+  ) %>%
+  cols_label(
+    Nutritional_Content = "Nutritional Content",
+    Review_Sum_Squared = "Sum Squared (Reviews)",
+    Sentiment_Sum_Squared = "Sum Squared (Sentiment)",
+    Review_P_Values = "P-Value (Reviews)",
+    Sentiment_P_Values = "P-Value (Sentiment)"
+  ) %>%
+  tab_caption("Table 3: Generalized Additive Model Estimates and Significance")
+
+nutrition_gt
+```
+
+Table 3 examines the different generalized additive models that regresses the number of reviews (as a metric of popularity) and average sentiment on nutritional content: `Number of Reviews ~ Carbs + Calories + Fat + Protein` and `Average Sentiment Score ~ Calories + Fat + Protein + Carbs`. In our analysis, we find that among the predictor variables considered, only `Carbs` yielded significance in the generalized additive model predicting the number of reviews. In the GAM model predicting average sentiment, only `Fat` exhibited significance as a predictor.
+
+The statistical significance of `Carbs` in predicting the number of reviews suggests that variations in carbohydrate content have a discernible impact on the number of reviews a recipe receives. This supports our earlier expectations that baking recipes tend to elicit more positive reactions in both individual ingredients and ingredient pairs compared to other types of recipes. We also see that `Fat` content is significant in predicting sentiment.
+
+Additionally, the sum squared estimates offer insights into the smoothness of the relationships captured by each predictor variable in the GAM models. In other words, the sum squared values tend to decrease on the regression with the number of reviews. This suggests a more linear approximation between the outcome variable, the number of reviews, and nutritional content. On the other hand, sentiment exhibits a more complex, non-linear relationship with nutritional content.
+
+# Results
+
+During the exploratory phase of our research, we noted significant skewness in both sentiment and nutritional content. Sentiment tended to exhibit a pronounced left skew, while nutritional aspects such as carbs, fat, protein, and calories displayed a notable right skew. This skewness shows that linear regression may not a reliable method to assess the relationship between sentiment and nutritional content for Q3. Therefore, alternative modeling approaches are used to approach the relationship between sentiment and nutritional content.
+
+Addressing the research question 1, it becomes apparent that only a handful of ingredients exhibit a significant association with sentiment. The ingredients white sugar and lemon juice are linked to positive sentiment, while ingredients typically associated with spicier or umami taste preferences, such as chili powder and ground beef, are generally associated with negative sentiment.
+
+In response to research question 2, we observe a greater number of significant associations in ingredient pairs compared to those identified in individual ingredients. This suggests that predicting sentiment becomes more reliable when considering ingredient combinations. Additionally, we can infer that sentiment prediction tends to be more favorable when analyzing groups with a larger number of ingredients. Moreover, there appears to be a stronger positive association towards sweet taste preferences, especially ingredients commonly used in baking.
+
+To investigate our results outlined in questions 1 and 2, which propose that distinct taste preferences correlate with significantly varied sentiment, we also examine the nutritional composition of each recipe. Using a generalized additive model regression to analyze the influence of individual nutritional components---calories, fat, carbs, and protein in grams---on both the number of reviews and sentiment, we identify statistically significant effects of different types of nutritional content on either the number of reviews or sentiment. Specifically, we observe that carbohydrate in grams impacts the number of reviews, while fat content in grams affects the average sentiment.
+
+# Discussion
+
+To further examine the takeways from the study, we revisit the study revealing the associations between children's television viewing habits and their food and beverage preferences [@sina2021digital]. The study primarily highlights positive correlations between digital media usage and preferences for sweet, fatty, and salty foods, alongside negative associations with preferences for bitter foods. This underscores the influence of digital media exposure on taste preferences.
+
+Although our research did not directly measure digital media usage, we utilized a popular online recipe sharing platform to gauge the sentiment and popularity of various recipes. Initial analyses of ingredients and sentiment revealed a positive sentiment towards commonly used baking ingredients and a negative sentiment towards spicy ingredients. Further investigation into sentiment and review counts showed that carbohydrate content impacts recipe popularity, while fat content affects recipe sentiment. Additionally, sentiment and popularity were specifically influenced by carbohydrate and fat content rather than calories and protein, suggesting a potential link between these findings and taste preferences observed in the digital media intake study.
+
+### Limitations
+
+One evident limitation in our data is the skewness present in our variable distribution. This skewness affects our ability to investigate linear relationships and direct correlations between variables effectively. Moreover, we cannot establish causal relationships or determine which predictors are most strongly correlated with specific response variables. Exploring correlations among variables can illustrate the true relationships between sentiment and ingredients, or sentiment and nutritional content.
+
+Additionally, we mainly focused on nutritional facts for recipe assessment, which can overlook the categorizations in food, such as snacks, desserts, healthy, vegan, etc. Exploring these categories can provide deeper insights into how perceptions of different food categories vary among individuals.
+
+### Future work
+
+In the case of our analysis, this research could be improved by utilizing a more nuanced regression analysis, as the relationship between sentiment, the number of reviews, and nutritional facts may be complex and non-parametric. Furthermore, our analysis was limited to individual ingredients and ingredient pairs. Our comparison revealed a greater number of statistically significant sentiment estimates with ingredient pairs. Examining groups of ingredients, rather than solely focusing on pairs, could provide deeper insights into perceptions of different food categories. Additionally, in exploring the impact of increased digital media use, it could be beneficial to investigate other social media platforms, such as TikTok or Instagram, that has growing food and beverage content.
+
+# References
+
+::: {#refs}
+:::
